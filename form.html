@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Form</title>
+    <style>
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .form-container form {
+            background-color: transparent;
+            border: none;
+            margin-bottom: 20px;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="email"],
+        .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            background-color: #eeeeee;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            color: #000000;
+        }
+
+        .form-container select {
+            width: 100%;
+            padding: 10px;
+            background-color: #eeeeee;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            color: #000000;
+        }
+
+        .form-container textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .form-container input[type="submit"] {
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .form-container input[type="submit"]:hover {
+            background-color: black;
+        }
+
+        .form-container input[type="text"]:focus,
+        .form-container input[type="email"]:focus,
+        .form-container textarea:focus {
+            background-color: silver;
+        }
+
+        .form-container .thank-you-msg {
+            display: none;
+            color: black;
+            margin-bottom: 20px;
+        }
+
+        .form-container .error-msg {
+            display: none;
+            color: red;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <form method="post" action="https://formspree.io/f/mleyrepz" id="quote-form">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="phone" placeholder="Phone" required>
+            <select name="services" required>
+                <option value="">Select Service</option>
+                <option value="service1">Service 1</option>
+                <option value="service2">Service 2</option>
+                <option value="service3">Service 3</option>
+            </select>
+            <input type="text" name="subject" placeholder="Subject" required>
+            <textarea name="message" placeholder="Message" required></textarea>
+            <input type="submit" value="Get a Quote">
+            <div class="error-msg" id="error-msg"></div>
+        </form>
+        <div class="thank-you-msg" id="thank-you-msg">
+            Thank you for your submission!
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('quote-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            var name = document.getElementsByName('name')[0].value;
+            var email = document.getElementsByName('email')[0].value;
+            var phone = document.getElementsByName('phone')[0].value;
+            var services = document.getElementsByName('services')[0].value;
+            var subject = document.getElementsByName('subject')[0].value;
+            var message = document.getElementsByName('message')[0].value;
+
+            // Validate fields
+            if (name.trim() === '' || email.trim() === '' || phone.trim() === '' || services === '' || subject.trim() === '' || message.trim() === '') {
+                document.getElementById('error-msg').innerHTML = 'Please fill in all fields.';
+                document.getElementById('error-msg').style.display = 'block';
+                document.getElementById('thank-you-msg').style.display = 'none';
+            } else {
+                // Submit form
+                document.getElementById('error-msg').style.display = 'none';
+                document.getElementById('thank-you-msg').style.display = 'block';
+                document.getElementById('quote-form').reset();
+            }
+        });
+    </script>
+</body>
+</html>
