@@ -37,6 +37,82 @@
 
     <!-- ========== Google Fonts ========== -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        h2 {
+            text-align: center;
+        }
+
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: transparent;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="email"],
+        .form-container input[type="tel"],
+        .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            background-color: #eeeeee;
+            color: #000000;
+            border-radius: 5px;
+            outline: none;
+            font-size: 14px;
+            height: 50px;
+        }
+
+        .form-container select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            background-color: #eeeeee;
+            color: #000000;
+            border-radius: 5px;
+            outline: none;
+            font-size: 14px;
+            height: 50px;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            padding-right: 30px;
+            background-image: url("arrow-down.png");
+            background-repeat: no-repeat;
+            background-position: right center;
+        }
+
+        .form-container button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            font-weight: bold;
+            height: 50px;
+        }
+
+        .form-container button:hover {
+            background-color: #000000;
+        }
+
+        .form-container button:active {
+            background-color: silver;
+        }
+
+        .thank-you-message {
+            text-align: center;
+            color: black;
+            margin-top: 20px;
+        }
+    </style>
 
 </head>
 
@@ -279,6 +355,36 @@
         </div>
     </div>
     <!-- End Contact -->
+ <h2>Get a Quote</h2>
+
+    <div class="form-container">
+        <form method="post" action="process.php">
+
+            <input type="text" id="name" name="name" placeholder="Name" required>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+            <input type="tel" id="phone" name="phone" placeholder="Phone" required>
+            <div class="form-row">
+                <select id="services" name="services" required>
+                    <option value="">Select a service</option>
+                    <option value="service1">Service 1</option>
+                    <option value="service2">Service 2</option>
+                    <option value="service3">Service 3</option>
+                </select>
+                <input type="text" id="subject" name="subject" placeholder="Subject" required>
+            </div>
+            <textarea id="message" name="message" rows="4" placeholder="Message" required></textarea>
+
+            <button type="submit" id="submit-btn">Get a Quote</button>
+        </form>
+
+        <div class="thank-you-message" id="thank-you-msg" style="display: none;">Thank you for your submission!</div>
+    </div>
+
+    <script>
+        document.getElementById('submit-btn').addEventListener('click', function() {
+            document.getElementById('thank-you-msg').style.display = 'block';
+        });
+    </script>
 
     <!-- Start Google Maps 
     ============================================= -->
